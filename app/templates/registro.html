@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div id="container-login">
+    <h1>Registro</h1>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div>
+            <label>{{ form.username.label }}</label>
+            {{ form.username(size=32) }}
+            {% for error in form.username.errors %}
+            <div id="alerta">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div>
+            <label>{{ form.password.label }}</label>
+            {{ form.password(size=32) }}
+            {% for error in form.password.errors %}
+            <div id="alerta">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div>
+            <label>{{ form.confirm_password.label }}</label>
+            {{ form.confirm_password(size=32) }}
+            {% for error in form.confirm_password.errors %}
+            <div id="alerta">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div>
+            <button id="btn_entrar" type="submit">Registrar</button>
+        </div>
+    </form>
+    <button id="btn_trocarcadastro" onclick="window.location.href='{{ url_for('login') }}'">Logar</button>
+</div>
+</body>
+</html>
